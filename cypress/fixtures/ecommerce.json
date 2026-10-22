@@ -1,0 +1,15 @@
+{
+    "username":"TestingProg",
+    "email":"randomEmail0.5552418308837604@gmail.com",
+    "password":"TestingProg@",
+    "firstName":"FirstName",
+    "lastName":"LastName",
+    "address":"Test Address st",
+    "state":"New Delhi",
+    "city":"Delhi",
+    "zip":110098,
+    "number": "0987667890",
+    "wrongpass":"wrongusername",
+    "wrongemail":"wrongemail" 
+  
+}

@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-describe("Validate login flow with registered user creds", () => {
+describe("Registration with an already registered email", () => {
   let data;
   before(() => {
     cy.fixture("ecommerce").then((fileData) => {
@@ -11,7 +11,7 @@ describe("Validate login flow with registered user creds", () => {
     cy.contains(" Signup / Login").click();
     cy.url().should("include", "/login");
   });
-  it("User should see error when login with registered email", () => {
+  it("should show an error when registering with an existing email", () => {
     cy.contains("h2", "New User Signup!").should("exist");
     cy.get('[data-qa="signup-name"]').type(data.username);
     cy.get('[data-qa="signup-email"]').type(data.email);

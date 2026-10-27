@@ -36,6 +36,7 @@ describe("should be able to add product to the cart", () => {
   it("Should be able to increase the quantity and verify total", () => {
     cy.fixture("ecommerce").then((data) => {
       let totalPrice = 0;
+      const uniqueEmail = `randomEmail${Math.random()}@gmail.com`;
       cy.visit("https://www.automationexercise.com/");
       cy.contains("Products").click();
       cy.url().should("include", "/products");
@@ -63,10 +64,10 @@ describe("should be able to add product to the cart", () => {
           cy.contains("Proceed To Checkout").click();
           cy.get('.modal-body a[href="/login"]').click();
           cy.get('[data-qa="signup-name"]').type(data.username);
-          cy.get('[data-qa="signup-email"]').type(data.email);
+          cy.get('[data-qa="signup-email"]').type(uniqueEmail);
           cy.get('[data-qa="signup-button"]').click();
           cy.url().should("include", "signup");
-          cy.get('[data-qa="password"]').type(data.password);
+          //cy.get('[data-qa="password"]').type(data.password);
           cy.get('[data-qa="first_name"]').type(data.firstName);
           cy.get('[data-qa="last_name"]').type(data.lastName);
           cy.get('[data-qa="address"]').type(data.address);
@@ -75,6 +76,7 @@ describe("should be able to add product to the cart", () => {
           cy.get('[data-qa="zipcode"]').type(data.zip);
           cy.get('[data-qa="mobile_number"]').type(data.number);
           cy.get('[data-qa="create-account"]').click();
+          cy.wait(2000)
           cy.get('[data-qa="account-created"]').should(
             "have.text",
             "Account Created!"
